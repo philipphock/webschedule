@@ -9,7 +9,7 @@ if (!Login::isLoggedIn()){
 	}
 }
 
-echo '<h1>Login</h1>';
+echo '<div class="centerbox_outer"><div class="centerbox_inner"><h1>Login</h1>';
 
 if (!Login::isLoggedIn()){
 	echo '
@@ -18,10 +18,9 @@ if (!Login::isLoggedIn()){
 			<input type="text" name="user" />
 			<input type="password" name="password"/>
 			<input type="submit" name="pwsubmit"  value="login"/>
-			
 			</form>
-	
 	';
 }else{
-	echo '<p>logged in<p>'; 
+	echo '<p>logged in</p>'; 
 }
+echo "</div></div>";

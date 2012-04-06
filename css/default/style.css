@@ -1,0 +1,23 @@
+body{
+	background-color: gray;
+}
+#container{
+	width:980px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: white;
+	padding: 5px 10px;
+}
+.centerbox_outer{
+	text-align:center;
+
+	padding:5px;
+}
+
+.centerbox_inner{
+	text-align:left;
+	display:inline-block;
+	margin-left:auto;
+	margin-right:auto;
+
+}
