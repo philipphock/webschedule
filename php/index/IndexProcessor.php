@@ -7,6 +7,7 @@ class IndexProcessor{
 	static function loadCSS($pageID,$style="default"){
 		$res=PathHelper::getPages($pageID);
 		if($res){
+			
 			$a=PathHelper::getFileList($res->getDir()."/css/".$style,$res->getUrl()."/css/".$style);
 			foreach ($a as $cssUrl){
 				echo  "<link rel='stylesheet' href='$cssUrl' />\n"; 
@@ -37,7 +38,9 @@ class IndexProcessor{
 	static function loadJS($pageID){
 		$res=PathHelper::getPages($pageID);
 		if($res){
-			$a=PathHelper::getFileList($res->getDir()."/js",$res->getUrl()."/js");
+			$a=PathHelper::getFileList($res->getDir()."/js/",$res->getUrl()."/js");
+			
+			
 			foreach ($a as $jsUrl){
 				echo "<script src='$jsUrl'></script>\n";
 			}
@@ -111,27 +114,38 @@ class PathHelper{
 		}
 	}
 		
+		
 
-	static function getFileList($path,$root){
-		$ret=array();
+	public static function getFileList($path,$root,$filter = null){
+		$ret = array();
 		if ($handle = opendir($path)){
 			while (false !== ($file = readdir($handle))) {
-			 	if($file=="." || $file == "..")continue;
+				
+			 	if ($file == "." || $file == "..")continue;
 			 	
-			 	if(is_file($path."/".$file)){
-			 		$ret[] = $root."/".$file;
+			 	if (is_file($path . "/" . $file)){
+			 		if ($filter != null){
+				 		if (strcmp(substr($file,-1*strlen($filter)),$filter)==0){
+				 			
+				 			$ret[] = $root."/". $file;
+				 		}	
+			 		}else{
+			 			$ret[] = $root."/". $file;
+			 		}
+			 			
 			 	}else{
-			 		return array_merge($ret,PathHelper::getFileList($path."/".$file, $root));
-			 		
+			 			
+			 		$ret=array_merge($ret,PathHelper::getFileList($path . "/" . $file, $root,$filter));
+			 			
 			 	}
 				
 			}
 		
 			closedir($handle);
 		}
+		
 		return $ret;
 	}
-
 }
 
 class Resource{
