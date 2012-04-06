@@ -1,5 +1,6 @@
 <?php
 defined('CMSCONTENT') or die ('access denied');
+$days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 
 ?>
 <br>
@@ -35,10 +36,42 @@ defined('CMSCONTENT') or die ('access denied');
 		<div id="calendarView">
 			<div id="monthView">
 				<h3 id="monthLabel">April</h3>
+				<table>
+					
+					<tr>
+						<?php
+							for ($x=0; $x < 7; $x++) {
+								echo "<th>$days[$x]</th>"; 	
+							}
+						?>
+					</tr>
+					
+					<?php
+					$day;
+					for ($y=0; $y < 6; $y++) {
+						echo "<tr>"; 
+						for ($x=0; $x < 7; $x++) {
+							echo "<td>"; 
+							$day = $y*6+$x;
+							echo "$day</td>";
+							
+						}	
+						echo "</tr>";
+					}
+					?>
+
+				</table>
 			</div>
 			
 			<div id="weekView">
 				<h3 id="weekLabel">42</h3>
+				<table><tr>
+						<?php
+							for ($x=0; $x < 7; $x++) {
+								echo "<th>$days[$x]</th>"; 	
+							}
+						?>
+				</tr></table>
 			</div>
 			
 			<div id="dayView">

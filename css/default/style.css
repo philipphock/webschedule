@@ -88,12 +88,15 @@ a:hover{
 	width:200px;
 }
 
-nav.horizontalNav>ul{
+.horizontalNav>ul{
+	list-style:none;
 	float:left;
 }
-nav.horizontalNav>ul>li{
+.horizontalNav>ul>li{
 	float:left;
+	
 }
-nav.horizontalNav>ul>li>a{
+.horizontalNav>ul>li>a{
 	float:left;
+	
 }

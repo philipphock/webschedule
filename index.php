@@ -54,8 +54,7 @@ $style="default";
 
   <script defer src="js/libs/jquery.js"></script>
   <script defer src="js/libs/jquery-ui-1.8.18.custom.min.js"></script>
-  
-  <script defer src="js/script.js"></script>
+  <script defer src="js/libs/jqueryui-datepicker.de.js"></script>
   <script defer src="js/DateModel.js"></script>
   <?php 
   	IndexProcessor::loadJS($id);
