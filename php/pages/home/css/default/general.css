@@ -1,6 +1,16 @@
-#appointments, #note{
-	max-width:48%;
-	width:48%;
-	display:inline-block;
-	
+.left{
+	width:120px;
+}
+#appointments{
+	width: 48%;
+}
+#notes{
+	width: 48%;
+}
+.middle{
+	padding:10px;
+	padding-left:50px;
+}
+.right{
+	width:260px;
 }

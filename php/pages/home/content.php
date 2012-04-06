@@ -8,36 +8,56 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 <div class="faketable">
 	
 	<div class="left">
-		left left left left left left left left left left left
-		left left left left left left left left left left left 
-		left left left left left left left left left left left 
-		left left left left left left left left left left left    
+		<div id="calendar"></div>    
 	</div><!--left-->
 	
 	
 	<div class="middle">
-		<div id="appointments">
-			appts appts appts appts appts appts appts appts appts appts
-			appts appts appts appts appts appts appts appts appts appts 
-			appts appts appts appts appts appts appts appts appts appts 
-			appts appts appts appts appts appts appts appts appts appts 
-			appts appts appts appts appts appts appts appts appts appts  
+		<div class="faketable">
+		<div id="appointments" class="td">
+			<h3>31.03.2012</h3>
+			<ul>
+				<li>9:30 Uhr
+					<ul>
+						<li>Termin</li>
+						<li>Termin</li>
+					</ul>
+				</li>
+				<li>9:30 Uhr
+					<ul>
+						<li>Termin</li>
+						<li>Termin</li>
+					</ul>
+				</li>
+				
+			</ul>
 		</div>
 		
-		<div id="notes">
-			notes notes notes notes notes notes notes notes notes notes notes 
-			notes notes notes notes notes notes notes notes notes notes notes 
-			notes notes notes notes notes notes notes notes notes notes notes 
-			notes notes notes notes notes notes notes notes notes notes notes   
+		<div id="notes" class="td">
+			<h3>Notes</h3>
 		</div>	
-	
+		</div>
 	</div><!--middle-->
 	
 		
 	<div class="right">
-		right right right right right right right right right right right right
-		right right right right right right right right right right right right 
-		right right right right right right right right right right right right    
+		<h3>Termine</h3>
+		<ul>
+			<li>30.03.2012
+				<ul>
+					<li>Termin</li>
+					<li>Termin</li>
+				</ul>
+			</li>
+			
+			<li>30.03.2012
+				<ul>
+					<li>Termin</li>
+					<li>Termin</li>
+				</ul>
+			</li>
+		</ul>
+		    
 	</div><!--right-->
 	
 </div>
