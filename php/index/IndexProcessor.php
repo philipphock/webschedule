@@ -22,7 +22,7 @@ class IndexProcessor{
 		if(!isset($_GET["id"])){
 			return IndexProcessor::$home;
 		}
-		if ($login && $_GET["id"] == "login" ){
+		if ($login && $_GET["id"] == "login" && !isset($_GET['logout'])){
 			return IndexProcessor::$home;
 		}
 			

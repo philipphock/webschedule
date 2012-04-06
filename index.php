@@ -30,7 +30,7 @@ $style="default";
   <div id="container" >
     <header>
     	<img id="pageBanner" src="img/<?php echo $style?>/banner.png" alt="pageBanner" />
-    	
+    	<?php include "php/structure/head.php";?>
 		<?php navigation($id);?>
     </header>
     <div id="main" role="main">
