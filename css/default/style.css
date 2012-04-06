@@ -72,13 +72,15 @@ a:hover{
 	display:table;
 	width:100%;	
 }
+.td{
+	display:table-cell;
+}
 .left, .right, .middle{
 	display:table-cell;
-	
 	padding:5px;
 }
 .left{
-	max-width:130px;
+	max-width:70px;
 		
 }
 .middle{
