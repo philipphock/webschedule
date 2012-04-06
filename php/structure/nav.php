@@ -10,7 +10,7 @@
 		}
 		
 		echo "<nav><ul>
-				<li><a $home href=\"home.html\">Home</a></li>
+				<!--<li><a $home href=\"home.html\">Home</a></li>-->
 
         </ul></nav><br />
 		    ";

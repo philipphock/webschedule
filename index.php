@@ -26,13 +26,15 @@ $style="default";
 </head>
 
 <body>
-
-  <div id="container" >
-    <header>
-    	<img id="pageBanner" src="img/<?php echo $style?>/banner.png" alt="pageBanner" />
+<header>
+	<div id="headerContainer">
+    	<!--<img id="pageBanner" src="img/<?php echo $style?>/banner.png" alt="pageBanner" />-->
     	<?php include "php/structure/head.php";?>
 		<?php navigation($id);?>
-    </header>
+	</div>
+</header>
+    
+  <div id="container" >
     <div id="main" role="main">
     	<div id="content">
 		<?php 
@@ -40,16 +42,18 @@ $style="default";
 		?>
 		</div>
     </div>
-    <footer>
-		<?php include "php/structure/foot.php";?>
-    </footer>
   </div> <!--! end of #container -->
+<footer>
+	<div id="footerContainer">
+		<?php include "php/structure/foot.php";?>
+	</div>
+</footer>
 
 
 
-  <script defer src="js/jquery.js"></script>
-
-  <script defer src="js/plugins.js"></script>
+  <script defer src="js/libs/jquery.js"></script>
+  <script defer src="js/libs/jquery-ui-1.8.18.custom.min.js"></script>
+  
   <script defer src="js/script.js"></script>
   <?php 
   	IndexProcessor::loadJS($id);

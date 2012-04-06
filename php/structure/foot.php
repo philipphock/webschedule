@@ -1,2 +1,2 @@
 <?php
-	echo "<p></p>";
+	echo "&nbsp;<p></p>";
