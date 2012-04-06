@@ -7,9 +7,10 @@ defined('CMSCONTENT') or die ('access denied');
 <div class="faketable">
 	
 	<div class="left">
-		<nav id="calendar">
-		CAL
-		</nav>	
+		
+		<div id="calendar">
+		
+		</div>	
 	</div><!--left-->
 	
 	<div class="middle">
