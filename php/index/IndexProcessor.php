@@ -42,7 +42,7 @@ class IndexProcessor{
 			
 			
 			foreach ($a as $jsUrl){
-				echo "<script src='$jsUrl'></script>\n";
+				echo "<script defer src='$jsUrl'></script>\n";
 			}
 		}
 	}

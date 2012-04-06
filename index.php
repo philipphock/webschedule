@@ -16,6 +16,7 @@ $style="default";
   <meta name="c_page" content="php/pages/<?php echo $id ?>">
 
   <link rel="stylesheet" href="css/before.css">
+  <link rel="stylesheet" href="css/default/ui-darkness/jquery-ui-1.8.18.custom.css">
   <link rel="stylesheet" href="css/<?php echo $style;?>/style.css">
   <?php 
   	IndexProcessor::loadCSS($id);

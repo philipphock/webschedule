@@ -15,9 +15,9 @@ defined('CMSCONTENT') or die ('access denied');
 	<div class="middle">
 		<nav id="viewnav" class="horizontalNav">
 		
-			<input type="checkbox" id="viewNavMonth" /><label for="viewNavMonth">Monat</label>
-			<input type="checkbox" id="viewNavWeek" /><label for="viewNavWeek">Woche</label>
-			<input type="checkbox" id="viewNavDay" /><label for="viewNavDay">Tag</label>
+			<input type="radio" id="viewNavMonth" name="viewNavRadio" /><label for="viewNavMonth">Monat</label>
+			<input type="radio" id="viewNavWeek" name="viewNavRadio" /><label for="viewNavWeek">Woche</label>
+			<input type="radio" id="viewNavDay" name="viewNavRadio" /><label for="viewNavDay">Tag</label>
 
 		</nav>
 		<div id="calendarView"></div>
