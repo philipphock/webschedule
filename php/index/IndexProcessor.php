@@ -15,12 +15,17 @@ class IndexProcessor{
 	}
 	
 	static function getPageID(){
-		//TODO SAFETY
-
+		$login = Login::isLoggedIn(); 
+		if (!$login){
+			return "login";
+		}
 		if(!isset($_GET["id"])){
 			return IndexProcessor::$home;
 		}
-		
+		if ($login && $_GET["id"] == "login" ){
+			return IndexProcessor::$home;
+		}
+			
 		if(strstr($_GET["id"], '..')){
 			return IndexProcessor::$home;
 		}

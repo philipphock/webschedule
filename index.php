@@ -1,4 +1,6 @@
 <?php 
+include "php/login/Login.php";
+
 include "indexHelper.php";
 PathHelper::setAppRoot("cms");
 $style="default";
