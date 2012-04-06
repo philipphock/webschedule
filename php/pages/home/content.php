@@ -8,14 +8,18 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 <div class="faketable">
 	
 	<div class="left">
-		<div id="calendar"></div>    
+		<div id="calendar"></div>
+		<br>
+		<button>neu</button>    
 	</div><!--left-->
 	
 	
 	<div class="middle">
+		<h3>31.03.2012</h3>
 		<div class="faketable">
+			
 		<div id="appointments" class="td">
-			<h3>31.03.2012</h3>
+			
 			<ul>
 				<li>9:30 Uhr
 					<ul>
@@ -23,7 +27,7 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 						<li>Termin</li>
 					</ul>
 				</li>
-				<li>9:30 Uhr
+				<li>10:30 Uhr
 					<ul>
 						<li>Termin</li>
 						<li>Termin</li>

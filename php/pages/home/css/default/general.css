@@ -2,7 +2,7 @@
 	width:120px;
 }
 #appointments{
-	width: 48%;
+	
 }
 #notes{
 	width: 48%;
@@ -10,6 +10,9 @@
 .middle{
 	padding:10px;
 	padding-left:50px;
+}
+.middle>h3{
+	text-align: center;
 }
 .right{
 	width:260px;
