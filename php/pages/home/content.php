@@ -18,15 +18,15 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 		<div class="faketable">
 			
 		<div id="appointments" class="td">
-			<h3>31.03.2012</h3>
+			<h3><time>31.03.2012</time></h3>
 			<ul>
-				<li>9:30 Uhr
+				<li><time>9:30 Uhr</time>
 					<ul>
 						<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 						<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 					</ul>
 				</li>
-				<li>10:30 Uhr
+				<li><time>10:30 Uhr</time>
 					<ul>
 						<li>Termin <a  class="fadebtn">x</a></li>
 						<li>Termin <a  class="fadebtn">x</a></li>
@@ -49,14 +49,14 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 	<div class="right">
 		<h3>Termine</h3>
 		<ul>
-			<li>30.03.2012
+			<li><time>30.03.2012</time>
 				<ul>
 					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 				</ul>
 			</li>
 			
-			<li>30.03.2012
+			<li><time>30.03.2012</time>
 				<ul>
 					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 					<li><a>Termin</a> <a  class="fadebtn">x</a></li>

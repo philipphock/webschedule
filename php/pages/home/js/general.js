@@ -1,8 +1,8 @@
 
 (function(){
-	$("#viewnav").buttonset();
+	
 	$( "#calendar" ).datepicker({ 
-		dateFormat: 'dd-mm-yy',
+		dateFormat: 'dd.mm.yy',
 		onSelect: dateSelected,
 		onChangeMonthYear: onChangeMonthYear
 	 });
