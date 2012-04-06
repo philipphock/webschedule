@@ -22,8 +22,8 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 			<ul>
 				<li>9:30 Uhr
 					<ul>
-						<li>Termin <a  class="fadebtn">x</a></li>
-						<li>Termin <a  class="fadebtn">x</a></li>
+						<li><a>Termin</a> <a  class="fadebtn">x</a></li>
+						<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 					</ul>
 				</li>
 				<li>10:30 Uhr
@@ -51,15 +51,15 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 		<ul>
 			<li>30.03.2012
 				<ul>
-					<li>Termin <a  class="fadebtn">x</a></li>
-					<li>Termin <a  class="fadebtn">x</a></li>
+					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
+					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 				</ul>
 			</li>
 			
 			<li>30.03.2012
 				<ul>
-					<li>Termin <a  class="fadebtn">x</a></li>
-					<li>Termin <a  class="fadebtn">x</a></li>
+					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
+					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
 				</ul>
 			</li>
 		</ul>
