@@ -1,3 +1,7 @@
+.faketable{
+	margin-top: 10px;
+}
+
 .left{
 	width:120px;
 }
@@ -5,15 +9,24 @@
 	
 }
 #notes{
-	width: 48%;
+	width: 58%;
 }
 .middle{
 	padding:10px;
 	padding-left:50px;
 }
-.middle>h3{
+.middle>h2{
 	text-align: center;
 }
 .right{
+	
 	width:260px;
+/*	background-color:#353535;
+	border: 2px solid #d7d7d7;
+	border-radius: 10px;
+	color:white;
+	padding:30px;
+	*/
+	
 }
+

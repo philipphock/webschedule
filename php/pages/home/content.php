@@ -10,12 +10,12 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 	<div class="left">
 		<div id="calendar"></div>
 		<br>
-		<button>neu</button>    
+		<a href="item.html">neu</a>    
 	</div><!--left-->
 	
 	
 	<div class="middle">
-		<h3>31.03.2012</h3>
+		<h2>31.03.2012</h2>
 		<div class="faketable">
 			
 		<div id="appointments" class="td">
@@ -38,11 +38,14 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 		</div>
 		
 		<div id="notes" class="td">
-			<h3>Notes</h3>
-		</div>	
+			<h3>Details</h3>
+			<p>Name: </p>
+			<p>Date: </p>
+			<p>Note: </p>
+		</div>
+			
 		</div>
 	</div><!--middle-->
-	
 		
 	<div class="right">
 		<h3>Termine</h3>
