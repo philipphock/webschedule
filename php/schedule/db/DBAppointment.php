@@ -1,5 +1,5 @@
 <?php
-class DBAppointments extends DB{
+class DBAppointment extends DB{
 	
 	function __construct(){
 		$userid = Login::getUser()->getId();
@@ -14,12 +14,14 @@ class DBAppointments extends DB{
 	public function createAppointment($name, $date, $time, $note){
 		$db = $this->getDB();
 		
-		if (!$this->appointmentTable) return false;
+		if (!$this->appointmentTable) throw new Exception("error creating database entry");
 	    $sql = 'INSERT INTO ' . $this->appointmentTable . '(date,time,name,note) VALUES (?,?,?,?)';
 	    $pstmt = $db->prepare( $sql );
 		$pstmt->bind_param('iiss', $date, $time,$name,$note);
-	    $var = $pstmt->execute();
-		var_dump($var);
+	    $success = $pstmt->execute();
+		if (!$success){
+			throw new Exception("error creating database entry");
+		}
 	    	 
 	}
 }

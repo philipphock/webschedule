@@ -2,11 +2,11 @@
 <form>
 	<div class="centerbox_outer">
 		<div class="centerbox_inner">
-			<h1>New Appointment</h1>
+			<h1>Edit Appointment</h1>
 			
 			<form method="get">
 			<label for="title">Title:</label>
-			<input required="required" name="name" type="text" autofocus="autofocus"/>
+			<input required="required" name="title" type="text" autofocus="autofocus"/>
 			<br>
 			<label for="date">Date:</label>
 			<input required="required" name="date" type="date" />
@@ -21,7 +21,7 @@
 			
 			<br>
 			<br>
-			<input type="hidden" name="new" value="true" />
+			<input type="hidden" name="edit" value="true" />
 			<input type="submit" name="apsubmit" value="ok" /> <input type="submit" value="abort" id="abort" formnovalidate="formnovalidate" formaction="home.html">
 			</form>
 			

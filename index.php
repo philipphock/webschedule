@@ -7,6 +7,11 @@ include "php/schedule/etc/Config.php";
 include "php/schedule/db/DB.php";
 include "php/schedule/db/DBUser.php";
 include "php/schedule/db/DBAppointment.php";
+
+include "php/schedule/etc/DateUtil.php";
+include "php/schedule/etc/UiUtil.php";
+
+
 include "indexHelper.php";
 
 
