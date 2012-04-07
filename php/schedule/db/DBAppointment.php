@@ -26,8 +26,13 @@ class DBAppointment extends DB{
 	}
 	
 	public function deleteAppointment($id){
-		//TODO
+		$db = $this->getDB();
+	    $sql = 'DELETE FROM ' . $this->appointmentTable . ' WHERE id = ? ';
+	    $pstmt = $db->prepare( $sql );
+		$pstmt->bind_param('i', $id);
+	    $pstmt->execute();
 	}
+	
 	public function editAppointment($appointment){
 		//TODO
 	}
@@ -56,10 +61,41 @@ class DBAppointment extends DB{
 		//TODO
 	}
 	public function getAppointmentById($id){
-		//TODO
+		$db = $this->getDB();
+		
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE id = ? ';
+	    
+	    $pstmt = $db->prepare( $sql );
+	    
+		$pstmt->bind_param('i', $id);
+		
+	    $pstmt->execute();
+	    $pstmt->bind_result( $id, $date, $time, $name, $note, $seen );
+		
+	    $pstmt->fetch();
+		
+	    $ret = new Appointment($id, $name, $date, $time, $note,$seen);
+	    
+		return $ret;
 	}
 	public function getAppointmentByDateAndTime($date, $time){
-		//TODO
+		$db = $this->getDB();
+		
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date = ? and time = ?';
+	    
+	    $pstmt = $db->prepare( $sql );
+	    
+		$pstmt->bind_param('ii', $date, $time);
+		
+	    $pstmt->execute();
+	    $pstmt->bind_result( $id, $date, $time, $name, $note, $seen );
+		
+	    $ret = array();
+	    while($pstmt->fetch()){
+	    	$ret[] = new Appointment($id, $name, $date, $time, $note,$seen);
+	    }
+		
+		return $ret;
 	}
 	
 	/**
