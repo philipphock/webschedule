@@ -1,6 +1,10 @@
-<?php 
+<?php
+include "php/login/User.php"; 
 include "php/login/Login.php";
-
+include "php/schedule/etc/Config.php";
+include "php/schedule/db/DB.php";
+include "php/schedule/db/DBUser.php";
+include "php/schedule/db/DBAppointment.php";
 include "indexHelper.php";
 PathHelper::setAppRoot("cms");
 $style="default";
