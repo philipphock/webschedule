@@ -10,10 +10,12 @@
 	
 	var date = new Date();
 	onChangeMonthYear(date.getFullYear(),date.getMonth()+1,null);
+	$("#notes").hide();
 	
 })();
 
 function dateSelected(dateText,obj){
+	$("#notes").hide();
 	dateText=dateText+"";
 	$("#appointments>h3>time").text(dateText.substr(6,2)+"."+dateText.substr(4,2)+"."+dateText.substr(0,4));
 	$.ajax({
@@ -42,10 +44,12 @@ function onChangeMonthYear(year, month, inst){
 
 function dateRecv(apps){
 	apps = toApp(apps);
+	
 	$("#appointments>ul>li").remove()
 	var appList = $("#appointments>ul");
   	for (var i = 0;i< apps.length;i++){
   		appList.append("<li><a href='javascript:getAppointment("+apps[i].json.id+")'>"+apps[i].getTime()+": "+apps[i].json.name+"</a></li>");
+  		$("#notes").show();
   	}
 }
 
