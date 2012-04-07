@@ -1,7 +1,6 @@
 <?php
+defined('CMSCONTENT') or die ('access denied');
 
-
-	
 	function navigation($id){
 		$home="";
 		

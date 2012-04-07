@@ -1,4 +1,6 @@
 <?php
+defined('CMSCONTENT') or die ('access denied');
+
 class User{
 	private $name;
 	private $role;

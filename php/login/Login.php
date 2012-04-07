@@ -1,4 +1,5 @@
 <?php
+defined('CMSCONTENT') or die ('access denied');
 
 class Login{
 	public static function isLoggedIn(){

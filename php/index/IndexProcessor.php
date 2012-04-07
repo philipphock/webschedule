@@ -1,5 +1,5 @@
 <?php
-
+defined('CMSCONTENT') or die ('access denied');
 
 class IndexProcessor{
 	private static $home="home";

@@ -6,7 +6,7 @@ include "php/schedule/db/DB.php";
 include "php/schedule/db/DBUser.php";
 include "php/schedule/db/DBAppointment.php";
 include "indexHelper.php";
-PathHelper::setAppRoot("cms");
+
 $style="default";
 ?>
 <!doctype html>
