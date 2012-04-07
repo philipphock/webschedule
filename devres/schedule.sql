@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 07. Apr 2012 um 10:44
+-- Erstellungszeit: 07. Apr 2012 um 16:46
 -- Server Version: 5.5.16
 -- PHP-Version: 5.3.8
 
@@ -26,14 +26,17 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `schedule_appointments_1`
 --
 
+DROP TABLE IF EXISTS `schedule_appointments_1`;
 CREATE TABLE IF NOT EXISTS `schedule_appointments_1` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `date` int(8) NOT NULL,
   `time` int(4) NOT NULL,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `note` text COLLATE utf8_unicode_ci NOT NULL,
+  `seen` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `date` (`date`,`time`,`name`)
+  KEY `date` (`date`,`time`,`name`),
+  KEY `seen` (`seen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -42,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `schedule_appointments_1` (
 -- Tabellenstruktur für Tabelle `schedule_users`
 --
 
+DROP TABLE IF EXISTS `schedule_users`;
 CREATE TABLE IF NOT EXISTS `schedule_users` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `user` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
