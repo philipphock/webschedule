@@ -13,6 +13,9 @@ if ($_POST['cmd'] == "appRange"){
 }else if ($_POST['cmd'] == "status"){
 	$arr = array ('status'=>"it works");
 	printJSON($arr);
+}else if ($_POST['cmd'] == "appId"){
+	$ap = $dba->getAppointmentById($_POST['id']);
+	printJSON($ap);
 }
 
 

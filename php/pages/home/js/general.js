@@ -14,7 +14,8 @@
 })();
 
 function dateSelected(dateText,obj){
-	//$( "#calendar" ).datepicker( "option", "disabled", true );
+	dateText=dateText+"";
+	$("#appointments>h3>time").text(dateText.substr(6,2)+"."+dateText.substr(4,2)+"."+dateText.substr(0,4));
 	$.ajax({
 	  type: 'POST',
 	  url: "php/schedule/ajax/appointments.php",
@@ -41,7 +42,11 @@ function onChangeMonthYear(year, month, inst){
 
 function dateRecv(apps){
 	apps = toApp(apps);
-  	
+	$("#appointments>ul>li").remove()
+	var appList = $("#appointments>ul");
+  	for (var i = 0;i< apps.length;i++){
+  		appList.append("<li><a href='javascript:getAppointment("+apps[i].json.id+")'>"+apps[i].getTime()+": "+apps[i].json.name+"</a></li>");
+  	}
 }
 
 function monthRecv(apps){
@@ -65,4 +70,22 @@ function toApp(json){
 	}else{
 		return new Appointment(json);
 	}
+}
+
+
+function getAppointment(id){
+	$.ajax({
+	  type: 'POST',
+	  url: "php/schedule/ajax/appointments.php",
+	  data: {cmd:"appId",id:id},
+	  success: idRecv,
+	  dataType: "json"
+	});
+}
+
+function idRecv(ap){
+	console.log(ap);
+	$("#details").html("");
+	$("#details").append(ap.note);
+	
 }
