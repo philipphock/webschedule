@@ -91,3 +91,11 @@ a:hover{
 .horizontalNav>ul>li>a{
 	float:left;	
 }
+.fright{
+	float:right;
+}
+
+form.searchfield{
+	margin-top:-40px;
+	
+}

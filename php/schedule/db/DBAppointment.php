@@ -37,10 +37,10 @@ class DBAppointment extends DB{
 	public function searchAppointments($name){
 		//TODO
 	}
-	public function getAppointment($id){
+	public function getAppointmentById($id){
 		//TODO
 	}
-	public function getAppointment($date, $time){
+	public function getAppointmentByDateAndTime($date, $time){
 		//TODO
 	}
 	
