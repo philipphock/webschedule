@@ -1,12 +1,13 @@
 <?php
 class Appointment{
 	
-	public function __construct($id, $name, $date, $time, $note){
+	public function __construct($id, $name, $date, $time, $note,$seen){
 		$this->id=$id;
 		$this->name=$name;
 		$this->date=$date;
 		$this->time=$time;
-		$this->note=$note;	
+		$this->note=$note;
+		$this->seen=$seen;		
 	}
 	
 	public function getId(){
@@ -21,6 +22,9 @@ class Appointment{
 	public function getNote(){
 		return $this->note;
 	}
+	public function isSeen(){
+		return $this->seen;
+	}
 
 
 	public function setDate($date){
@@ -32,7 +36,9 @@ class Appointment{
 	public function setNote($note){
 		$this->note = $note;
 	}
-
+	public function setSeen($seen){
+		$this->seen = $seen;
+	}
 
 	public function getFormattedDate(){
 		return $this->date; //TODO;

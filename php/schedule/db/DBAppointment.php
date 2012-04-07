@@ -43,4 +43,16 @@ class DBAppointment extends DB{
 	public function getAppointment($date, $time){
 		//TODO
 	}
+	
+	/**
+	 * Deletes all seen and expired dates
+	 * @return array of deleted appointments 
+	 */
+	public function purge(){
+		//TODO
+	}
+	
+	public function getExpiredAndUnseenAppointments(){
+		//TODO
+	}
 }
