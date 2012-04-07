@@ -2,7 +2,7 @@
 (function(){
 	
 	$( "#calendar" ).datepicker({ 
-		dateFormat: 'dd.mm.yy',
+		dateFormat: 'yymmdd',
 		onSelect: dateSelected,
 		onChangeMonthYear: onChangeMonthYear
 	 });
@@ -12,19 +12,31 @@
 })();
 
 function dateSelected(dateText,obj){
-	console.log(obj);
+	
 	$.ajax({
 	  type: 'POST',
 	  url: "php/schedule/ajax/appointments.php",
-	  data: {cmd:"status"},
+	  data: {cmd:"appRange",start:dateText,stop:dateText},
 	  success: dateRecv,
 	  dataType: "json"
 	});
 }
 function onChangeMonthYear(year, month, inst){
-	console.log(month);
+	month = (month<10)?"0"+month:""+month;
+	
+	
+	$.ajax({
+	  type: 'POST',
+	  url: "php/schedule/ajax/appointments.php",
+	  data: {cmd:"appRange",start:year+month+"01",stop:year+month+"31"},
+	  success: monthRecv,
+	  dataType: "json"
+	});
 }
 
-function dateRecv(data){
-	
+function dateRecv(apps){
+	console.log(apps);
+}
+function monthRecv(apps){
+	console.log(apps);
 }

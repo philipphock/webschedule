@@ -32,7 +32,25 @@ class DBAppointment extends DB{
 		//TODO
 	}
 	public function getAppointments($startDate,$endDate=null){
-		//TODO
+		$db = $this->getDB();
+		if ($endDate == null){
+			$endDate=$startDate;
+		}
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date <= ? and date >= ?';
+	    
+	    $pstmt = $db->prepare( $sql );
+	    
+		$pstmt->bind_param('ii', $endDate, $startDate);
+		
+	    $pstmt->execute();
+	    $pstmt->bind_result( $id, $date, $time, $name, $note, $seen );
+		
+	    $ret = array();
+	    while($pstmt->fetch()){
+	    	$ret[] = new Appointment($id, $name, $date, $time, $note,$seen);
+	    }
+		
+		return $ret;
 	}
 	public function searchAppointments($name){
 		//TODO
