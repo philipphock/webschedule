@@ -24,4 +24,23 @@ class DBAppointment extends DB{
 		}
 	    	 
 	}
+	
+	public function deleteAppointment($id){
+		//TODO
+	}
+	public function editAppointment($appointment){
+		//TODO
+	}
+	public function getAppointments($startDate,$endDate=null){
+		//TODO
+	}
+	public function searchAppointments($name){
+		//TODO
+	}
+	public function getAppointment($id){
+		//TODO
+	}
+	public function getAppointment($date, $time){
+		//TODO
+	}
 }
