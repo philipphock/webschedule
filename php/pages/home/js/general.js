@@ -51,7 +51,6 @@ function getNextAppointments(){
 	
 	var today = dateToYYYYMMDD();
 	nextDate = dateToYYYYMMDD(nextDate);
-	 console.log(nextDate);
 	Calendar.getAppointmentsInRange(today,nextDate,nextAppsRecv);
 	
 }
@@ -97,7 +96,14 @@ function updateUI(){
 		$("#editLink").attr("href","item.html?ap="+curApp.json.id);
 		$("#details").html("");	
 		$("#details").html(curApp.json.note);
-		$("#time_detail").html(curApp.getTime());
+		var time = curApp.getTime();
+		$("#time_detail").html(time);
+		if (!time){
+			$("#time_label").hide();	
+		}else{
+			$("#time_label").show();
+		}
+		
 		$("#date_detail").html(curApp.getDate());
 		$("#name_detail").html(curApp.json.name);
 		$("#notes").show();
@@ -195,5 +201,12 @@ function dateToYYYYMMDD(date){
 }
 
 function getAppLink(app){
-	return "<a href='javascript:getAppointment("+app.json.id+")'>"+app.getTime()+": "+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
+	var time = app.getTime();
+	
+	if (time){
+		time = time + ": ";
+	}else{
+		time="";
+	}
+	return "<a href='javascript:getAppointment("+app.json.id+")'>"+time+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
 }

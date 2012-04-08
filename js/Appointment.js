@@ -4,6 +4,14 @@ function Appointment(json){
 	
 	self.getTime =function(){
 		var time = self.json.time+"";
+		if (time==-1){
+			return false;
+		}else{
+			while(time.length<4){
+				time="0"+time;
+			}	
+		}
+			
 		return time.substr(0,2)+":"+time.substr(2,2);
 	}
 	self.getDate = function(){

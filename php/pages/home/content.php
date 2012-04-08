@@ -27,7 +27,7 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 		<div id="notes" class="td">
 			<h3><span id="name_detail"></span><a id="editLink"  href="" class="fadebtn">µ</a></h3>
 			<p>Date: <time id="date_detail"></time></p>
-			<p>Time: <time id="time_detail"></time></p>
+			<p id="time_label">Time: <time id="time_detail"></time></p>
 			<div id="details"></div>
 		</div>
 			

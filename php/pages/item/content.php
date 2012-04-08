@@ -10,10 +10,15 @@ if (isset($_GET['edit'])){
 	preg_match('/^(\\d\\d):(\\d\\d)$/', $_GET['time'], $timematches);
 	
 	
-	if (count($datematches)==4 && count($timematches)==3){
+	if (count($datematches)==4){
 		
 		$date = $datematches[3] . $datematches[2] . $datematches[1];
-		$time = $timematches[1] . $timematches[2];  	
+		if (count($timematches)==3){
+			$time = $timematches[1] . $timematches[2];	
+		}else{
+			$time = -1; 
+		}
+		  	
 		
 		try{
 			$dba->createAppointment($_GET['name'],$date,$time,$_GET['note']);
