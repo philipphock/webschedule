@@ -67,6 +67,7 @@ include "indexHelper.php";
   <script defer src="js/libs/jquery-ui-1.8.18.custom.min.js"></script>
   <script defer src="js/libs/jqueryui-datepicker.de.js"></script>
   <script defer src="js/Appointment.js"></script>
+  <script defer src="js/CModel.js"></script>
   <script defer src="js/script.js"></script>
   <?php 
   	IndexProcessor::loadJS($id);

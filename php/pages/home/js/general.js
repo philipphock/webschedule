@@ -1,4 +1,13 @@
+var datepicker_shown_year;
+var datepicker_shown_month;
+var datepicker_date;
 
+var monthApps=null;
+var curApps=null;
+var curApp=null;
+
+
+//init
 (function(){
 	//init calendar
 	$( "#calendar" ).datepicker({ 
@@ -9,59 +18,122 @@
 	$( "#calendar" ).datepicker($.datepicker.regional['de'] );
 	
 	var date = new Date();
-	onChangeMonthYear(date.getFullYear(),date.getMonth()+1,null);
+	datepicker_shown_year = date.getFullYear(); 
+	datepicker_shown_month = date.getMonth()+1;
+	
+	var month = datepicker_shown_month<10?"0"+datepicker_shown_month:""+datepicker_shown_month;
+	var day = (date.getDay()+1)<10?"0"+(date.getDay()+1):""+(date.getDay()+1);
+	datepicker_date = datepicker_shown_year+month+day;
+	pullModel();
 	$("#notes").hide();
 	
 })();
 
-function dateSelected(dateText,obj){
-	$("#notes").hide();
-	dateText=dateText+"";
-	$("#appointments>h3>time").text(dateText.substr(6,2)+"."+dateText.substr(4,2)+"."+dateText.substr(0,4));
-	$.ajax({
-	  type: 'POST',
-	  url: "php/schedule/ajax/appointments.php",
-	  data: {cmd:"appRange",start:dateText,stop:dateText},
-	  success: dateRecv,
-	  dataType: "json"
-	}).success(function(){
-		//$( "#calendar" ).datepicker( "option", "disabled", false );
-		onChangeMonthYear(obj.currentYear,obj.currentMonth+1);
-	});
+
+//commands
+function getAppointment(id){
+	Calendar.getAppointment(id,appRecv);
 }
-function onChangeMonthYear(year, month, inst){
-	month = (month<10)?"0"+month:""+month;
-	
-	$.ajax({
-	  type: 'POST',
-	  url: "php/schedule/ajax/appointments.php",
-	  data: {cmd:"appRange",start:year+month+"01",stop:year+month+"31"},
-	  success: monthRecv,
-	  dataType: "json"
+
+
+function deleteApp(id){
+	Calendar.deleteAppointment(id,function(){
+		
 	});
 	
 }
 
+function updateUI(){
+	$("#notes").hide();
+	$("#appointments>h3>time").text(datepicker_date.substr(6,2)+"."+datepicker_date.substr(4,2)+"."+datepicker_date.substr(0,4));
+	
+	//update months
+	for (var i = 0;i<monthApps.length;i++){
+  		var day = parseInt(monthApps[i].getDay());
+  		  		
+  		$("#calendar a:contains("+day+")").each(function(k,v){
+  			var $v = $(v);
+  			if ($v.text() == day){
+  				$v.addClass("appDay");
+  			}
+  		});
+  	}
+  	
+  	if (curApps != null){
+	  	//update date
+	  	$("#appointments>ul>li").remove()
+		var appList = $("#appointments>ul");
+	  	for (var i = 0;i< curApps.length;i++){
+	  		if (i == 0){
+	  			//getAppointment(curApps[i].json.id);
+	  			if (curApp == null){
+	  				curApp = curApps[i];
+	  			}
+	  		}
+	  		appList.append("<li><a href='javascript:getAppointment("+curApps[i].json.id+")'>"+curApps[i].getTime()+": "+curApps[i].json.name+"</a> <a href=\"javascript:deleteApp("+curApps[i].json.id+")\" class=\"fadebtn\">x</a></li>");
+	  	}
+	}
+	//update app
+	if (curApp != null){
+		
+		$("#editLink").attr("href","item.html?ap="+curApp.json.id);
+		$("#details").html("");	
+		$("#details").html(curApp.json.note);
+		$("#time_detail").html(curApp.getTime());
+		$("#date_detail").html(curApp.getDate());
+		$("#name_detail").html(curApp.json.name);
+		$("#notes").show();
+	}
+}
+
+function pullModel(){
+	//reset cache
+	monthApps=null;
+	curApps=null;
+	curApp=null;
+	
+	//getAppointmentsOfMonth
+	Calendar.getAppointmentsOfMonth(datepicker_shown_year,datepicker_shown_month,monthRecv);
+	//getAppointmentsOfSelected
+	Calendar.getAppointmentsInRange(datepicker_date,datepicker_date,function(e){
+				dateRecv(e);
+				//onChangeMonthYear(datepicker_shown_year,datepicker_shown_month);
+	});
+}
+//ajax callbacks
+
 function dateRecv(apps){
 	apps = toApp(apps);
-	
-	$("#appointments>ul>li").remove()
-	var appList = $("#appointments>ul");
-  	for (var i = 0;i< apps.length;i++){
-  		appList.append("<li><a href='javascript:getAppointment("+apps[i].json.id+")'>"+apps[i].getTime()+": "+apps[i].json.name+"</a></li>");
-  		$("#notes").show();
-  	}
+	curApps = apps;
+	updateUI();
 }
 
 function monthRecv(apps){
 	apps = toApp(apps);
-	for (var i = 0;i<apps.length;i++){
-  		var day = apps[i].getDay();  		
-  		$("#calendar a:contains("+day+")").addClass("appDay");
-  		
-  	}
+	monthApps = apps;
+	updateUI();
+}
+function appRecv(ap){
+	curApp=toApp(ap);
+	updateUI();
 }
 
+
+//user input callbacks
+function dateSelected(dateText,obj){
+	dateText=dateText+"";
+	datepicker_date = dateText;
+	pullModel();
+}
+
+function onChangeMonthYear(year, month, inst){
+	datepicker_shown_year = year
+	datepicker_shown_month = month;
+	//month = (month<10)?"0"+month:""+month;
+	pullModel();
+}
+
+//util
 /**
  * makes an json App [array] to an Appointment [array]
  */
@@ -74,22 +146,4 @@ function toApp(json){
 	}else{
 		return new Appointment(json);
 	}
-}
-
-
-function getAppointment(id){
-	$.ajax({
-	  type: 'POST',
-	  url: "php/schedule/ajax/appointments.php",
-	  data: {cmd:"appId",id:id},
-	  success: idRecv,
-	  dataType: "json"
-	});
-}
-
-function idRecv(ap){
-	console.log(ap);
-	$("#details").html("");
-	$("#details").append(ap.note);
-	
 }

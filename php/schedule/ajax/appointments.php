@@ -16,6 +16,9 @@ if ($_POST['cmd'] == "appRange"){
 }else if ($_POST['cmd'] == "appId"){
 	$ap = $dba->getAppointmentById($_POST['id']);
 	printJSON($ap);
+}else if ($_POST['cmd'] == "del"){
+	$dba->deleteAppointment($_POST['id']);
+	echo "";
 }
 
 

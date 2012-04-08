@@ -1,3 +1,0 @@
-function Calendar(){}
-
-//Calendar.getMonth
