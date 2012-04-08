@@ -8,7 +8,10 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 <div class="faketable">
 	
 	<div class="left">
-		<div id="calendar"></div>
+		<br>
+		<a href="home.html">heute</a>
+		<br><br>
+		<div id="calendar"></div>	
 		<br>
 		<a href="item.html">neu</a>    
 	</div><!--left-->
