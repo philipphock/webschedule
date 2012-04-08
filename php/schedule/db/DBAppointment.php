@@ -67,8 +67,24 @@ class DBAppointment extends DB{
 		
 		return $ret;
 	}
-	public function searchAppointments($name){
-		//TODO
+	public function searchAppointments($q){
+		$db = $this->getDB();
+		$q = "%".$q."%";
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE name LIKE ? ORDER BY date,time ASC';
+	    
+	    $pstmt = $db->prepare( $sql );
+	    
+		$pstmt->bind_param('s', $q);
+		
+	    $pstmt->execute();
+	    $pstmt->bind_result( $id, $date, $time, $name, $note, $seen );
+		
+	    $ret = array();
+	    while($pstmt->fetch()){
+	    	$ret[] = new Appointment($id, $name, $date, $time, $note,$seen);
+	    }
+	    
+		return $ret;
 	}
 	public function getAppointmentById($id){
 		$db = $this->getDB();

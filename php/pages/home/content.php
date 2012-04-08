@@ -1,7 +1,12 @@
 <?php
 defined('CMSCONTENT') or die ('access denied');
 $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
-
+if (isset($_GET['date'])){
+	echo "<input type='hidden' id='setdate' value='" . htmlspecialchars($_GET["date"]) . "' />";
+}
+if (isset($_GET['app'])){
+	echo "<input type='hidden' id='setapp' value='" . htmlspecialchars($_GET["app"]) . "' />";
+}
 ?>
 <br>
 

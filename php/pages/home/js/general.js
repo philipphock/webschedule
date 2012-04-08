@@ -18,13 +18,25 @@ var dayPrev = 7;
 	 });
 	$( "#calendar" ).datepicker($.datepicker.regional['de'] );
 	
-	var date = new Date();
-	datepicker_shown_year = date.getFullYear(); 
-	datepicker_shown_month = date.getMonth()+1;
+	if ($("#setdate").length>0){
+		datepicker_date = $("#setdate").val();
+		datepicker_shown_year = datepicker_date.substr(0,4); 
+		datepicker_shown_month = datepicker_date.substr(4,2);
+		
+	}else{
+		var date = new Date();
+		datepicker_shown_year = date.getFullYear(); 
+		datepicker_shown_month = date.getMonth()+1;
+		var month = datepicker_shown_month<10?"0"+datepicker_shown_month:""+datepicker_shown_month;
+		var day = (date.getDate())<10?"0"+(date.getDate()):""+(date.getDate());
+		datepicker_date = datepicker_shown_year+month+day;
+	}
 	
-	var month = datepicker_shown_month<10?"0"+datepicker_shown_month:""+datepicker_shown_month;
-	var day = (date.getDate())<10?"0"+(date.getDate()):""+(date.getDate());
-	datepicker_date = datepicker_shown_year+month+day;
+	if ($("#setapp").length>0){
+		getAppointment($("#setapp").val());
+	}
+	
+	
 	pullModel();
 	$("#notes").hide();
 	$("#dayPrev").text(dayPrev);
@@ -39,6 +51,7 @@ function getAppointment(id){
 
 
 function deleteApp(id){
+	curApp=null;
 	Calendar.deleteAppointment(id,function(){
 		pullModel();
 	});
@@ -63,27 +76,30 @@ function updateUI(){
 	
 	//update calendar
 	
+	if (monthApps){
+		//update months
+		for (var i = 0;i<monthApps.length;i++){
+	  		var day = parseInt(monthApps[i].getDay(),10);
+	  			
+	  		$("#calendar a:contains("+day+")").each(function(k,v){
+	  			var $v = $(v);
+	  			if ($v.text() == day){
+	  				$v.addClass("appDay");
+	  			}
+	  		});
+	  	}
 	
-	//update months
-	for (var i = 0;i<monthApps.length;i++){
-  		var day = parseInt(monthApps[i].getDay(),10);
-  			
-  		$("#calendar a:contains("+day+")").each(function(k,v){
-  			var $v = $(v);
-  			if ($v.text() == day){
-  				$v.addClass("appDay");
-  			}
-  		});
-  	}
-  	
+	}
+	  	
   	if (curApps != null){
 	  	//update date
 	  	$("#appointments>ul>li").remove()
 		var appList = $("#appointments>ul");
 	  	for (var i = 0;i< curApps.length;i++){
 	  		if (i == 0){
-	  			//getAppointment(curApps[i].json.id);
+				
 	  			if (curApp == null){
+	  				console.log(">",curApp);
 	  				curApp = curApps[i];
 	  			}
 	  		}
@@ -120,12 +136,15 @@ function updateUI(){
 	}
 }
 
-function pullModel(){
-	//reset cache
-	monthApps=null;
-	curApps=null;
-	curApp=null;
-	nextApps = null;
+function pullModel(noreset){
+	if (!noreset){
+		//reset cache
+		monthApps=null;
+		curApps=null;
+		
+		nextApps = null;	
+	}
+	
 	
 	//getAppointmentsOfMonth
 	Calendar.getAppointmentsOfMonth(datepicker_shown_year,datepicker_shown_month,monthRecv);
@@ -146,9 +165,10 @@ function dateRecv(apps){
 function monthRecv(apps){
 	apps = toApp(apps);
 	monthApps = apps;
-	updateUI();
+	updateUI(true);
 }
 function appRecv(ap){
+	console.log(ap);
 	curApp=toApp(ap);
 	updateUI();
 }
@@ -161,6 +181,7 @@ function nextAppsRecv(apps){
 function dateSelected(dateText,obj){
 	dateText=dateText+"";
 	datepicker_date = dateText;
+	curApp=null;
 	pullModel();
 }
 
