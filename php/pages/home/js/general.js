@@ -2,10 +2,11 @@ var datepicker_shown_year;
 var datepicker_shown_month;
 var datepicker_date;
 
+var nextApps = null;
 var monthApps=null;
 var curApps=null;
 var curApp=null;
-
+var dayPrev = 7;
 
 //init
 (function(){
@@ -22,10 +23,11 @@ var curApp=null;
 	datepicker_shown_month = date.getMonth()+1;
 	
 	var month = datepicker_shown_month<10?"0"+datepicker_shown_month:""+datepicker_shown_month;
-	var day = (date.getDay()+1)<10?"0"+(date.getDay()+1):""+(date.getDay()+1);
+	var day = (date.getDate())<10?"0"+(date.getDate()):""+(date.getDate());
 	datepicker_date = datepicker_shown_year+month+day;
 	pullModel();
 	$("#notes").hide();
+	$("#dayPrev").text(dayPrev);
 	
 })();
 
@@ -38,18 +40,34 @@ function getAppointment(id){
 
 function deleteApp(id){
 	Calendar.deleteAppointment(id,function(){
-		
+		pullModel();
 	});
+	
+}
+
+function getNextAppointments(){
+	var todayDate = new Date();
+	var nextDate = new Date(Date.parse(todayDate)+dayPrev*1000*60*60*24);
+	
+	var today = dateToYYYYMMDD();
+	nextDate = dateToYYYYMMDD(nextDate);
+	 console.log(nextDate);
+	Calendar.getAppointmentsInRange(today,nextDate,nextAppsRecv);
 	
 }
 
 function updateUI(){
 	$("#notes").hide();
+	$("#nextApps li").remove();
+
 	$("#appointments>h3>time").text(datepicker_date.substr(6,2)+"."+datepicker_date.substr(4,2)+"."+datepicker_date.substr(0,4));
+	
+	//update calendar
+	
 	
 	//update months
 	for (var i = 0;i<monthApps.length;i++){
-  		var day = parseInt(monthApps[i].getDay());
+  		var day = parseInt(monthApps[i].getDate());
   		  		
   		$("#calendar a:contains("+day+")").each(function(k,v){
   			var $v = $(v);
@@ -70,7 +88,7 @@ function updateUI(){
 	  				curApp = curApps[i];
 	  			}
 	  		}
-	  		appList.append("<li><a href='javascript:getAppointment("+curApps[i].json.id+")'>"+curApps[i].getTime()+": "+curApps[i].json.name+"</a> <a href=\"javascript:deleteApp("+curApps[i].json.id+")\" class=\"fadebtn\">x</a></li>");
+	  		appList.append("<li>"+getAppLink(curApps[i])+"</li>");
 	  	}
 	}
 	//update app
@@ -84,6 +102,16 @@ function updateUI(){
 		$("#name_detail").html(curApp.json.name);
 		$("#notes").show();
 	}
+	
+	//nextApps
+	
+	if (nextApps != null){
+		
+		var $next = $("#nextApps");
+		for (var i = 0;i<nextApps.length;i++){
+			$next.append("<li>"+getAppLink(nextApps[i])+"</li>");
+		}
+	}
 }
 
 function pullModel(){
@@ -91,14 +119,15 @@ function pullModel(){
 	monthApps=null;
 	curApps=null;
 	curApp=null;
+	nextApps = null;
 	
 	//getAppointmentsOfMonth
 	Calendar.getAppointmentsOfMonth(datepicker_shown_year,datepicker_shown_month,monthRecv);
 	//getAppointmentsOfSelected
 	Calendar.getAppointmentsInRange(datepicker_date,datepicker_date,function(e){
 				dateRecv(e);
-				//onChangeMonthYear(datepicker_shown_year,datepicker_shown_month);
 	});
+	getNextAppointments();
 }
 //ajax callbacks
 
@@ -117,7 +146,10 @@ function appRecv(ap){
 	curApp=toApp(ap);
 	updateUI();
 }
-
+function nextAppsRecv(apps){
+	nextApps = toApp(apps);
+	updateUI();
+}
 
 //user input callbacks
 function dateSelected(dateText,obj){
@@ -146,4 +178,22 @@ function toApp(json){
 	}else{
 		return new Appointment(json);
 	}
+}
+
+function dateToYYYYMMDD(date){
+	date=(date)?date:new Date();
+	
+	var month = date.getMonth()+1;
+	month = (month<10)?"0"+month:""+month;
+	var day = date.getDate();
+	var day = day<10 ? "0"+day : ""+day; 
+	var year = date.getFullYear();
+	
+	return year+month+day;
+	
+	 
+}
+
+function getAppLink(app){
+	return "<a href='javascript:getAppointment("+app.json.id+")'>"+app.getTime()+": "+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
 }

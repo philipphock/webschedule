@@ -41,7 +41,7 @@ class DBAppointment extends DB{
 		if ($endDate == null){
 			$endDate=$startDate;
 		}
-	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date <= ? and date >= ?';
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date <= ? and date >= ? ORDER BY date,time ASC';
 	    
 	    $pstmt = $db->prepare( $sql );
 	    
@@ -63,7 +63,7 @@ class DBAppointment extends DB{
 	public function getAppointmentById($id){
 		$db = $this->getDB();
 		
-	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE id = ? ';
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE id = ? ORDER BY date,time ASC';
 	    
 	    $pstmt = $db->prepare( $sql );
 	    
@@ -81,7 +81,7 @@ class DBAppointment extends DB{
 	public function getAppointmentByDateAndTime($date, $time){
 		$db = $this->getDB();
 		
-	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date = ? and time = ?';
+	    $sql = 'SELECT id, date, time, name, note, seen FROM ' . $this->appointmentTable . ' WHERE date = ? and time = ? ORDER BY date,time ASC';
 	    
 	    $pstmt = $db->prepare( $sql );
 	    

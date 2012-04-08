@@ -35,21 +35,9 @@ $days=array("Mo","Di","Mi","Do","Fr","Sa","So");
 	</div><!--middle-->
 		
 	<div class="right">
-		<h3>Termine</h3>
-		<ul>
-			<li><time>30.03.2012</time>
-				<ul>
-					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
-					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
-				</ul>
-			</li>
+		<h3>Termine <span id="dayPrev"></span> Tage</h3>
+		<ul id="nextApps">
 			
-			<li><time>30.03.2012</time>
-				<ul>
-					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
-					<li><a>Termin</a> <a  class="fadebtn">x</a></li>
-				</ul>
-			</li>
 		</ul>
 		    
 	</div><!--right-->
