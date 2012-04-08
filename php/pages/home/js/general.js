@@ -21,7 +21,7 @@ var dayPrev = 7;
 	if ($("#setdate").length>0){
 		datepicker_date = $("#setdate").val();
 		datepicker_shown_year = datepicker_date.substr(0,4); 
-		datepicker_shown_month = datepicker_date.substr(4,2);
+		datepicker_shown_month = parseInt(datepicker_date.substr(4,2),10);
 		
 	}else{
 		var date = new Date();
@@ -99,7 +99,6 @@ function updateUI(){
 	  		if (i == 0){
 				
 	  			if (curApp == null){
-	  				console.log(">",curApp);
 	  				curApp = curApps[i];
 	  			}
 	  		}
@@ -147,6 +146,7 @@ function pullModel(noreset){
 	
 	
 	//getAppointmentsOfMonth
+	
 	Calendar.getAppointmentsOfMonth(datepicker_shown_year,datepicker_shown_month,monthRecv);
 	//getAppointmentsOfSelected
 	Calendar.getAppointmentsInRange(datepicker_date,datepicker_date,function(e){
@@ -163,12 +163,14 @@ function dateRecv(apps){
 }
 
 function monthRecv(apps){
+	
 	apps = toApp(apps);
 	monthApps = apps;
-	updateUI(true);
+	
+	updateUI();
 }
 function appRecv(ap){
-	console.log(ap);
+	
 	curApp=toApp(ap);
 	updateUI();
 }
