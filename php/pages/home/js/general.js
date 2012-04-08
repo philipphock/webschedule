@@ -87,7 +87,7 @@ function updateUI(){
 	  				curApp = curApps[i];
 	  			}
 	  		}
-	  		appList.append("<li>"+getAppLink(curApps[i])+"</li>");
+	  		appList.append("<li>"+getAppLink(curApps[i],true)+"</li>");
 	  	}
 	}
 	//update app
@@ -115,7 +115,7 @@ function updateUI(){
 		
 		var $next = $("#nextApps");
 		for (var i = 0;i<nextApps.length;i++){
-			$next.append("<li>"+getAppLink(nextApps[i])+"</li>");
+			$next.append("<li>"+getAppLink(nextApps[i],false,true)+"</li>");
 		}
 	}
 }
@@ -200,13 +200,19 @@ function dateToYYYYMMDD(date){
 	 
 }
 
-function getAppLink(app){
+function getAppLink(app,showtime,showdate){
 	var time = app.getTime();
 	
-	if (time){
+	if (time && showtime){
 		time = time + ": ";
 	}else{
 		time="";
 	}
-	return "<a href='javascript:getAppointment("+app.json.id+")'>"+time+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
+	
+	var date = "";
+	
+	if (showdate){
+		date = app.getDate() +": ";
+	}
+	return "<a href='javascript:getAppointment("+app.json.id+")'>"+date+time+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
 }
