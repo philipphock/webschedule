@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+//include "php5fix.php";
 
 include "php/index/IndexProcessor.php";
 PathHelper::setBaseDir(__DIR__);
