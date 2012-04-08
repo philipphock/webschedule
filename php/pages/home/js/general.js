@@ -58,7 +58,7 @@ function getNextAppointments(){
 function updateUI(){
 	$("#notes").hide();
 	$("#nextApps li").remove();
-
+	$( "#calendar" ).datepicker("refresh");
 	$("#appointments>h3>time").text(datepicker_date.substr(6,2)+"."+datepicker_date.substr(4,2)+"."+datepicker_date.substr(0,4));
 	
 	//update calendar
