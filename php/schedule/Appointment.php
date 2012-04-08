@@ -48,6 +48,7 @@ class Appointment{
 		return $this->getDay() . "." . $this->getMonth() . "." . $this->getYear();
 	}
 	public function getFormattedTime(){
+		if ($this->getTime() == -1) return "";
 		return $this->getMinute() . ":" . $this->getHour();  
 	}
 	

@@ -34,7 +34,17 @@ class DBAppointment extends DB{
 	}
 	
 	public function editAppointment($appointment){
-		//TODO
+		$db = $this->getDB();
+		
+		if (!$this->appointmentTable) throw new Exception("error editing database entry");
+		
+	    $sql = 'UPDATE ' . $this->appointmentTable . ' SET date = ? , time = ? , name = ? , note = ? WHERE id = ?';
+	    $pstmt = $db->prepare( $sql );
+		$pstmt->bind_param('iissi', $appointment->getDate(), $appointment->getTime(),$appointment->getName(),$appointment->getNote(),$appointment->getId());
+	    $success = $pstmt->execute();
+		if (!$success){
+			throw new Exception("error creating database entry");
+		}
 	}
 	public function getAppointments($startDate,$endDate=null){
 		$db = $this->getDB();

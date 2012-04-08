@@ -5,8 +5,8 @@
 			<h1>Edit Appointment</h1>
 			<input type="hidden" name="apid" value="<?php echo $app->getId()?>" />
 			<form method="get">
-			<label for="title">Title:</label>
-			<input required="required" name="title" type="text" value="<?php echo $app->getName()?>" autofocus="autofocus"/>
+			<label for="name">Title:</label>
+			<input required="required" name="name" type="text" value="<?php echo $app->getName()?>" autofocus="autofocus"/>
 			<br>
 			<label for="date">Date:</label>
 			<input required="required" name="date" value="<?php echo $app->getFormattedDate()?>" type="date" />

@@ -66,8 +66,8 @@ function updateUI(){
 	
 	//update months
 	for (var i = 0;i<monthApps.length;i++){
-  		var day = parseInt(monthApps[i].getDate());
-  		  		
+  		var day = parseInt(monthApps[i].getDay(),10);
+  			
   		$("#calendar a:contains("+day+")").each(function(k,v){
   			var $v = $(v);
   			if ($v.text() == day){
