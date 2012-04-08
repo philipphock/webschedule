@@ -25,6 +25,9 @@ class Appointment{
 	public function isSeen(){
 		return $this->seen;
 	}
+	public function getName(){
+		return $this->name;
+	}
 
 
 	public function setDate($date){
@@ -41,26 +44,35 @@ class Appointment{
 	}
 
 	public function getFormattedDate(){
-		return $this->date; //TODO;
+		
+		return $this->getDay() . "." . $this->getMonth() . "." . $this->getYear();
 	}
 	public function getFormattedTime(){
-		return $this->time; //TODO;
+		return $this->getMinute() . ":" . $this->getHour();  
 	}
 	
 	public function getMonth(){
-		return $this->date; //TODO;
+		return substr($this->date,4,2);
 	}
 	public function getDay(){
-		return $this->time; //TODO;
+		return substr($this->date,6,2);
 	}
 	public function getYear(){
-		return $this->date; //TODO;
+		return substr($this->date,0,4);
 	}
 	public function getHour(){
-		return $this->time; //TODO;
+		$timestr = $this->time."";
+		while (strlen($timestr)<4){
+			$timestr = "0".$timestr;
+		}
+		return substr($timestr,0,2);
 	}
 	public function getMinute(){
-		return $this->time; //TODO;
+		$timestr = $this->time."";
+		while (strlen($timestr)<4){
+			$timestr = "0".$timestr;
+		}
+		return substr($timestr,2,2);
 	}
 	
 }

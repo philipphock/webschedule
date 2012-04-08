@@ -34,6 +34,8 @@ if (isset($_GET['edit'])){
 	
 	
 }else if (isset($_GET['ap'])){
+	$dba = new DBAppointment();
+	$app=$dba->getAppointmentById($_GET['ap']);
 	include "View_edit.php";
 }else{
 	include "View_new.php";

@@ -3,21 +3,21 @@
 	<div class="centerbox_outer">
 		<div class="centerbox_inner">
 			<h1>Edit Appointment</h1>
-			
+			<input type="hidden" name="apid" value="<?php echo $app->getId()?>" />
 			<form method="get">
 			<label for="title">Title:</label>
-			<input required="required" name="title" type="text" autofocus="autofocus"/>
+			<input required="required" name="title" type="text" value="<?php echo $app->getName()?>" autofocus="autofocus"/>
 			<br>
 			<label for="date">Date:</label>
-			<input required="required" name="date" type="date" />
+			<input required="required" name="date" value="<?php echo $app->getFormattedDate()?>" type="date" />
 			<br>
 			
 			<label for="time">Time:</label>
-			<input name="time" type="time" />
+			<input name="time" type="time" value="<?php echo $app->getFormattedTime()?>" />
 			<br>
 			<br>
 			<label for="note">Note:</label>
-			<textarea name="note"></textarea>
+			<textarea name="note"><?php echo $app->getNote()?></textarea>
 			
 			<br>
 			<br>
