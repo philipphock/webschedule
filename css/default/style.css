@@ -99,3 +99,17 @@ form.searchfield{
 	margin-top:-40px;
 	
 }
+
+.fadebtn{
+	margin-left:5px;
+	opacity:0.04;
+}
+.fadebtn:hover{
+	opacity:1;
+	cursor: pointer;
+	text-decoration: none;
+	border:1px solid #333ba8;
+	background-color: #9ac7d4;
+	padding: 1px 3px;
+	margin-left:2px;
+}

@@ -12,13 +12,13 @@ if (!isset($_GET["q"])){
 		echo "<p>no results</p>";
 		
 	}else{
-		echo "<div id=\"results\"><ul>";
+		echo "<div class='centerbox_outer'><div class='centerbox_inner'><div id=\"results\"><ul>";
 				
 			foreach ($apps as $key => $value) {
-				echo "<li><a href='home.html?date=".$value->getDate()."&app=".$value->getId()."'>" . $value->getFormattedDate() . ": " . $value->getName() . "</a></li>";
+				echo "<li><a href='home.html?date=".$value->getDate()."&app=".$value->getId()."'>" . $value->getFormattedDate() . ": " . $value->getName() . "</a> <a href=\"javascript:deleteApp(".$value->getId().")\" class=\"fadebtn\">x</a></li>";
 			}	
 				
-		echo "</div>";	
+		echo "</div></div></div>";	
 	}
 		
 }
