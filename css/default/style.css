@@ -113,3 +113,9 @@ form.searchfield{
 	padding: 1px 3px;
 	margin-left:2px;
 }
+
+#logout_link{
+	float:right;
+	margin-top:-10px;
+	padding-right:4px;
+}
