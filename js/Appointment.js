@@ -23,7 +23,8 @@ function Appointment(json){
 	}
 	self.getDay = function(){
 		var date = self.json.date+"";
-		
 		return date.substr(6,2);
 	}
+	
+	
 }

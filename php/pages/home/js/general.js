@@ -72,7 +72,8 @@ function updateUI(){
 	$("#notes").hide();
 	$("#nextApps li").remove();
 	$( "#calendar" ).datepicker("refresh");
-	$("#appointments>h3>time").text(datepicker_date.substr(6,2)+"."+datepicker_date.substr(4,2)+"."+datepicker_date.substr(0,4));
+	var d = datepicker_date.substr(6,2)+"."+datepicker_date.substr(4,2)+"."+datepicker_date.substr(0,4);
+	$("#appointments>h3>time").text(DateUtil.parse(d));
 	
 	//update calendar
 	
@@ -235,7 +236,8 @@ function getAppLink(app,showtime,showdate){
 	var date = "";
 	
 	if (showdate){
-		date = app.getDate() +": ";
+		
+		date = DateUtil.parse(app.getDate())  +": ";
 	}
 	return "<a href='javascript:getAppointment("+app.json.id+")'>"+date+time+app.json.name+"</a> <a href=\"javascript:deleteApp("+app.json.id+")\" class=\"fadebtn\">x</a>";
 }
