@@ -80,16 +80,18 @@ a:hover{
 	padding:5px;
 }
 
-.horizontalNav>ul{
+.horizontalNav>ul, .horizontalNav{
 	list-style:none;
-	float:left;
-}
-.horizontalNav>ul>li{
-	float:left;
 	
 }
-.horizontalNav>ul>li>a{
+.horizontalNav>ul>li, .horizontalNav>li{
+	float:left;
+	display:block;
+	
+}
+.horizontalNav>ul>li>a, .horizontalNav>li>a{
 	float:left;	
+	display:block;
 }
 .fright{
 	float:right;

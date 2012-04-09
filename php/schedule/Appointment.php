@@ -49,7 +49,7 @@ class Appointment{
 	}
 	public function getFormattedTime(){
 		if ($this->getTime() == -1) return "";
-		return $this->getMinute() . ":" . $this->getHour();  
+		return  $this->getHour() . ":" . $this->getMinute();  
 	}
 	
 	public function getMonth(){
