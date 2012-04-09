@@ -303,10 +303,12 @@ FileETag None
 # Turning on the rewrite engine is necessary for the following rules and features.
 # FollowSymLinks must be enabled for this to work.
 #  RewriteRule ^([^/]*).html$ /schedule/index.php?id=$1 [QSA]
+#  RewriteRule ([^/]*).html$ index.php?id=$1 [QSA]
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks
   RewriteEngine On
-  RewriteRule ([^/]*).html$ index.php?id=$1 [QSA]
+
+  RewriteRule ^([^/]*).html$ /schedule/index.php?id=$1 [QSA]
 
   
 </IfModule>
