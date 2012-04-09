@@ -29,15 +29,10 @@
 	*/
 	
 }
-nav>ul>li{
-	padding:3px;
-	padding-left:0px;
-}
+
 
 .appDay{
 	font-weight: bolder !important;
 	color:red !important;
 }
-.block{
-	display:block;
-}
+

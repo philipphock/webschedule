@@ -13,15 +13,7 @@ if (isset($_GET['app'])){
 <div class="faketable">
 	
 	<div class="left">
-		<nav><ul><li>
-				<a href="home.html">heute</a>
-			</li><li>
-				<div id="calendar"></div>
-			</li><li>
-				<a href="item.html">neu</a>
-			</li><li>
-				<a href="manage.html">manage</a>
-			</li></ul></nav>
+			<div id="calendar"></div>
 	</div><!--left-->
 	
 	
