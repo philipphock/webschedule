@@ -41,7 +41,7 @@ DateUtil.parse = function(date,format){
 	if (pdate.getDate() == now.getDate() && pdate.getMonth() == now.getMonth() && pdate.getFullYear() == now.getFullYear()){
 		isToday = " (heute)";
 	}
-	return DateUtil.days[pdate.getDay()] + " " + date + isToday;
+	return DateUtil.days[pdate.getDay()-1] + " " + date + isToday;
 }	
 
 

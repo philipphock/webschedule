@@ -120,7 +120,7 @@ function updateUI(){
 			$("#time_label").show();
 		}
 		
-		$("#date_detail").html(curApp.getDate());
+		$("#date_detail").html(DateUtil.parse(curApp.getDate()));
 		$("#name_detail").html(curApp.json.name);
 		$("#notes").show();
 	}
