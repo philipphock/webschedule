@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `schedule_users` (
 --
 
 INSERT INTO `schedule_users` (`id`, `user`, `pw`, `role`) VALUES
-(1, 'phil', 'phil', 'admin');
+(1, 'admin', '123456b9d11b3be25f5a1a7dc8ca04cd310b28', 'admin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

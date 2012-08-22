@@ -20,13 +20,16 @@ class DBUser extends DB{
 	    $pstmt->fetch();
 		
 		
-		
 		if ($id != 0){
 			$salt = substr($pw, 0, 6);
 			$saltedInputPW = md5($salt . $password);
 			
-			if ($salt . $saltedInputPW == $pw)
+			
+			if ($salt . $saltedInputPW == $pw){
+				//login success
 				return new User($id,$usr,$role);
+			}
+				
 		}
 		return User::createGuest();
 	}
