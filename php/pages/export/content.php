@@ -1,4 +1,19 @@
 <?php
 defined('CMSCONTENT') or die ('access denied');
 
-include("View_export.php");
+
+$c=PathHelper::getPages("export");
+
+if($c){
+		
+	$nopage=base64_encode ($c->getDir() . "/exporting.php");
+	
+	include("View_export.php");
+	
+
+	
+}else{
+	echo "really serious error occured";
+}
+
+

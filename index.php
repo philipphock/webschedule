@@ -14,7 +14,10 @@ include "php/schedule/etc/UiUtil.php";
 
 include "indexHelper.php";
 
-
+if (isset($_GET['nopage'])){
+	include base64_decode($_GET['nopage']);
+	exit();
+}
 ?>
 <!doctype html>
 <html>
