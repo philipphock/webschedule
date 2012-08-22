@@ -42,6 +42,9 @@ class Appointment{
 	public function setSeen($seen){
 		$this->seen = $seen;
 	}
+	public function setName($name){
+		$this->name = $name;
+	}
 
 	public function getFormattedDate(){
 		

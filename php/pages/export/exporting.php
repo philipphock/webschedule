@@ -15,7 +15,10 @@ END:VCALENDAR";
  * @return string vcal string of an appointment
  */
 function getEventString($name,$date,$time,$descr){
-	
+if (!preg_match("/^[0-9]+$/", $time)){
+	$time="0000";
+}
+
 while (strlen($time) < 4){
 	$time="0".$time;
 }
